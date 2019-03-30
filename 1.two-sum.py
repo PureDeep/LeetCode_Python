@@ -31,10 +31,12 @@
 #
 class Solution:
     def twoSum(self, nums, target):
-        list= []
-        n = len(nums)
-        for i in range(n):
-            x = target - nums[i]
-            if x in nums and nums.index(x) != i:
-                return [i, nums.index(x)]
+        #创建一个空词典
+        index_map = {}
 
+        for i in range(len(nums)):
+            if nums[i] in index_map:    #这里是判断nums[i]是否存在于index_map的索引（index）部分
+                return [index_map[nums[i]], i]
+
+            #
+            index_map[target - nums[i]] = i
